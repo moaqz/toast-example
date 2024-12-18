@@ -1,0 +1,62 @@
+[data-toaster] {
+  --container-width: 20rem;
+
+  margin: 0;
+  padding: 1rem;
+
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  width: var(--container-width);
+  user-select: none;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 0.5rem;
+  overflow: hidden;
+}
+
+[data-toast] {
+  --toast-background: hsla(240, 28%, 18%, 93%);
+
+  list-style: none;
+  background-color: var(--toast-background);
+  padding: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.25rem;
+  pointer-events: all;
+
+  animation-name: slideIn;
+  animation-duration: 400ms;
+  animation-timing-function: ease;
+
+  &[data-type="success"] {
+    border-top: 4px solid var(--color-success);
+  }
+
+  &[data-type="error"] {
+    border-top: 4px solid var(--color-error);
+  }
+
+  &[data-type="info"] {
+    border-top: 4px solid var(--color-accent)
+  }
+}
+
+[data-toast-description] {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+
+@keyframes slideIn {
+  from {
+    translate: 100%;
+    opacity: 0;
+  }
+
+  to {
+    translate: 0;
+    opacity: 1;
+  }
+}
